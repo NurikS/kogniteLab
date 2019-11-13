@@ -29,3 +29,6 @@ class Model:
     def AddLayer(self, n):
         self.model.add(Dense(n))
         self.model.add(Activation("relu"))
+
+    def SaveModel(self):
+        self.model.save("model.h5")

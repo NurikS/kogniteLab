@@ -1,29 +1,37 @@
 import sys
 from tkinter import *
 from Model import Model
+from flask import Flask
 
-def main():
+class MainWindow():
 
-    master = Tk()
-    master.title("KogniteLab")
-    model = Model(16)
+    def __init__(self):
+        self.master = Tk()
+        self.master.title("KogniteLab")
+        self.master.geometry("500x500")
+        self.model = Model(16)
+        self.LayerButton = Button(self.master, text="Add Layer", command=self.build)
+        self.SummaryButton = Button(self.master, text="Summary", command=self.summary)
+        self.SaveButoon = Button(self.master, text="Save the model", command=self.save_model)
+        self.LayerButton.pack()
+        self.SummaryButton.pack()
+        self.SaveButoon.pack()
+        mainloop()
+        
 
-    def build():
-        model.AddLayer(10)
+
+    def build(self):
+        self.model.AddLayer(10)
         print("layer added")
 
-    def summary():
-        model.ModelDefinition()
+    def summary(self):
+        self.model.ModelDefinition()
 
-    LayerButton = Button(master, text="Add Layer", command=build)
-    SummaryButton = Button(master, text="Summary", command=summary)
+    def save_model(self):
+        self.model.SaveModel()
 
-
-    LayerButton.pack()
-    SummaryButton.pack()
-
-    mainloop()
-
+    
 
 if __name__ == '__main__':
-    main()
+    window = MainWindow()
+    
