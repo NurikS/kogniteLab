@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <button id="btn_add_layer">Add Layer</button>
+        <button id="btn_summary">Summary</button>
+        <button id="btn_save_model">Save Model</button>
+
+        <script type="text/javascript">
+            function post_action(input)
+            {
+                $.ajax({
+                    url: "http://localhost:5000/api",
+                    method: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify(input),
+                    success: function(data){}
+
+                });
+            }
+            $(document).ready(function(){
+                $("#btn_add_layer").click(function(){
+                    //add layer function
+                })
+            })
+        </script>
+    </body>
+</html>
