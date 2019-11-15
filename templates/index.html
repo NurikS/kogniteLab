@@ -4,27 +4,59 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
     <body>
-        <button id="btn_add_layer">Add Layer</button>
-        <button id="btn_summary">Summary</button>
-        <button id="btn_save_model">Save Model</button>
+        <button id="btn_add_layer" onclick="add_layer()">Add Layer</button>
+        <button id="btn_summary" onclick="summary()">Summary</button>
+        <button id="btn_save_model" onclick="savemodel()">Save Model</button>
 
         <script type="text/javascript">
-            function post_action(input)
+            function add_layer(input)
             {
                 $.ajax({
-                    url: "http://localhost:5000/api",
+                    url: "/addlayer",
                     method: "POST",
                     contentType: "application/json",
                     data: JSON.stringify(input),
-                    success: function(data){}
+                    success: function(data){
+
+                    }
 
                 });
             }
-            $(document).ready(function(){
-                $("#btn_add_layer").click(function(){
-                    //add layer function
-                })
-            })
+
+            function savemodel(input)
+            {
+                $.ajax({
+                    url: "/save",
+                    method: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify(input),
+                    success: function(data){
+
+                    }
+
+                });
+            }
+
+            function summary(input)
+            {
+                $.ajax({
+                    url: "/summary",
+                    method: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify(input),
+                    success: function(data){
+
+                    }
+
+                });
+            }
+            //$(document).ready(function(){
+            //    $("#btn_add_layer").click(function(){
+            //        //add layer function
+            //        post_action("");
+            //        
+            //    })
+            //})
         </script>
     </body>
 </html>
