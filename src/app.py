@@ -1,32 +1,38 @@
 from flask import Flask, request, render_template
+from flask_cors import CORS, cross_origin
 from Model import Model
 from flask_sqlalchemy import SQLAlchemy
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="../templates")
+cors = CORS(app)
+app.config["CORS_HEADERS"] = "Content-Type"
 
+model = Model(10)
 
 
 @app.route("/addlayer", methods=["GET", "POST"])
+@cross_origin()
 def AddLayer():
-    print(request.json)
-    return "OK", 200
+    model.AddLayer(10)
+    print("tests")
+    return "added layer", 200
+
 
 @app.route("/summary", methods=["GET", "POST"])
+@cross_origin()
 def Summary():
-    print(request.json)
+    model.ModelDefinition()
     return "OK", 200
 
 @app.route("/save", methods=["GET", "POST"])
+@cross_origin()
 def SaveModel():
     print(request.json)
     return "OK", 200
 
-@app.route("/", methods=["GET", "POST"])
-def index():
-    return render_template("index.html")
+
 
 
 
 if __name__ == '__main__':
-    model = Model(10)
-    app.run(host="127.0.0.1", port=5000, debug=True)
+    app.run(host = "127.0.0.1", debug=True)
