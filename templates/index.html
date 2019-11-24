@@ -1,62 +1,56 @@
 <!DOCTYPE html>
+<html lang="en">
 <html>
     <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+         
+        <title>KogniteLab</title>
     </head>
     <body>
-        <button id="btn_add_layer" onclick="add_layer()">Add Layer</button>
-        <button id="btn_summary" onclick="summary()">Summary</button>
-        <button id="btn_save_model" onclick="savemodel()">Save Model</button>
+        <button id="btn_add_layer">Add Layer</button>
+        <button id="btn_summary">Summary</button>
+        <button id="btn_save_model">Save Model</button>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-        <script type="text/javascript">
-            function add_layer(input)
-            {
-                $.ajax({
-                    url: "/addlayer",
+        <script>   
+            $("#btn_add_layer").click(function(){
+            $.ajax({url: "http://127.0.0.1:5000/addlayer", 
                     method: "POST",
-                    contentType: "application/json",
-                    data: JSON.stringify(input),
+                    data: {"action": "adding layer"},
                     success: function(data){
-
+                        console.log("layer added post")
+                        console.log(data)
                     }
 
-                });
-            }
-
-            function savemodel(input)
-            {
-                $.ajax({
-                    url: "/save",
+            })
+        });
+    
+        $("#btn_summary").click(function(){
+            $.ajax({url: "http://127.0.0.1:5000/summary", 
                     method: "POST",
-                    contentType: "application/json",
-                    data: JSON.stringify(input),
+                    data: {"action": "summary printed"},
                     success: function(data){
-
+                        console.log("summary post")
+                        console.log(data)
                     }
 
-                });
-            }
-
-            function summary(input)
-            {
-                $.ajax({
-                    url: "/summary",
+            })
+        });
+    
+        $("#btn_save_model").click(function(){
+            $.ajax({url: "http://127.0.0.1:5000/save", 
                     method: "POST",
-                    contentType: "application/json",
-                    data: JSON.stringify(input),
+                    data: {"action": "saving model"},
                     success: function(data){
-
+                        console.log("saved model post")
+                        console.log(data)
                     }
 
-                });
-            }
-            //$(document).ready(function(){
-            //    $("#btn_add_layer").click(function(){
-            //        //add layer function
-            //        post_action("");
-            //        
-            //    })
-            //})
+            })
+        });
+            
         </script>
     </body>
+
 </html>

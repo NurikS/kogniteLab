@@ -1,5 +1,7 @@
 #python==3.6.6
 keras==2.2.4
 numpy==1.16.3
-Flask
-Flask-SQLAlchemy
+Flask==1.0.3
+Flask-SQLAlchemy==2.4.1
+tensorflow==1.13.1
+flask-cors==3.0.8
