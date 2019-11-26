@@ -14,7 +14,7 @@ model = Model(10)
 @cross_origin()
 def AddLayer():
     model.AddLayer(10)
-    print("tests")
+    print("layer added")
     return "added layer", 200
 
 
@@ -22,12 +22,13 @@ def AddLayer():
 @cross_origin()
 def Summary():
     model.ModelDefinition()
-    return "OK", 200
+    return "summary printed", 200
 
 @app.route("/save", methods=["GET", "POST"])
 @cross_origin()
 def SaveModel():
-    print(request.json)
+    model.SaveModel()
+    print("model saved")
     return "OK", 200
 
 
