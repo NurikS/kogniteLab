@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+         
+        <title>KogniteLab</title>
+    </head>
+    <body>
+        <button id="btn_add_layer">Add Layer</button>
+        <button id="btn_summary">Summary</button>
+        <button id="btn_save_model">Save Model</button>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+        <script>   
+            $("#btn_add_layer").click(function(){
+            $.ajax({url: "http://127.0.0.1:5000/addlayer", 
+                    method: "POST",
+                    data: {"action": "adding layer"},
+                    success: function(data){
+                        console.log("layer added post")
+                        console.log(data)
+                    }
+
+            })
+        });
+    
+        $("#btn_summary").click(function(){
+            $.ajax({url: "http://127.0.0.1:5000/summary", 
+                    method: "POST",
+                    data: {"action": "summary printed"},
+                    success: function(data){
+                        console.log("summary post")
+                        console.log(data)
+                    }
+
+            })
+        });
+    
+        $("#btn_save_model").click(function(){
+            $.ajax({url: "http://127.0.0.1:5000/save", 
+                    method: "POST",
+                    data: {"action": "saving model"},
+                    success: function(data){
+                        console.log("saved model post")
+                        console.log(data)
+                    }
+
+            })
+        });
+            
+        </script>
+    </body>
+
+</html>

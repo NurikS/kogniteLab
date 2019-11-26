@@ -1,7 +1,6 @@
 import sys
 from tkinter import *
 from Model import Model
-from flask import Flask
 
 class MainWindow():
 
@@ -32,6 +31,5 @@ class MainWindow():
 
     
 
-if __name__ == '__main__':
-    window = MainWindow()
+
     
