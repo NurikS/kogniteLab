@@ -13,7 +13,7 @@ model = Model(10)
 @app.route("/addlayer", methods=["GET", "POST"])
 @cross_origin()
 def AddLayer():
-    model.AddLayer(10)
+    model.AddDenseLayer(10)
     print("layer added")
     return "added layer", 200
 

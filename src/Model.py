@@ -29,7 +29,7 @@ class Model:
     def Predict(self, X):    
         self.model.predict(X)
 
-    def AddLayer(self, n):
+    def AddDenseLayer(self, n):
         with graph.as_default():
             self.model.add(Dense(n))
             self.model.add(Activation("relu"))
